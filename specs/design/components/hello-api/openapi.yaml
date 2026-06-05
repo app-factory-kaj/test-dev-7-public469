@@ -1,0 +1,43 @@
+openapi: 3.0.3
+info:
+  title: Hello API
+  version: 1.0.0
+  description: A simple Hello World REST API
+
+servers:
+  - url: http://localhost:9090
+    description: Local development
+
+paths:
+  /hello:
+    get:
+      summary: Get hello message
+      description: Returns a Hello, World! message
+      operationId: getHello
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Hello, World!"
+                required:
+                  - message
+
+  /health:
+    get:
+      summary: Health check
+      description: Returns service health status
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "OK"
